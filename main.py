@@ -92,7 +92,7 @@ with tf.Session() as sess:
 	sess.run(init)
 	env=gym.make('MountainCar-v0')
 
-	for episodes in range(1000):
+	for episodes in range(5000):
 		s,s_prime,r=get_next_episode_data(env)
 		non_terminal=numpy.ones_like(r)
 		non_terminal[-1]=0
