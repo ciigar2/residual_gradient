@@ -134,7 +134,7 @@ def comparison(model, training_episodes, test_episodes, gamma=1.0, alpha=0.001, 
     print('test MC err: ', mc_test, ', train MC err: ', mc_train, ' -- monte carlo')
 
 
-def mpl(input_size, hidden_layers=1, hidden_nodes=10):
+def mlp(input_size, hidden_layers=1, hidden_nodes=10):
     input_weights = tf.Variable(tf.random_normal([input_size, hidden_nodes], stddev=0.35))
     input_biases = tf.Variable(tf.ones([hidden_nodes]))
     output_weights = tf.Variable(tf.random_normal([hidden_nodes, 1], stddev=0.35))
@@ -171,7 +171,7 @@ def mountainCar():
     train = generate(env, policy, num_episodes=100)
     test = generate(env, policy, num_episodes=50)
 
-    comparison(mpl(env.observation_space.shape[0], hidden_layers=1, hidden_nodes=100),
+    comparison(mlp(env.observation_space.shape[0], hidden_layers=1, hidden_nodes=100),
                train, test, gamma=0.95, alpha=0.001, iterations=5000)
 
 mountainCar()
